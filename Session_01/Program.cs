@@ -1,10 +1,19 @@
 ﻿namespace Session_01
 {
-    internal class Program
+    public partial class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            //Instantiate class obj
+            var add = new Program();
+            add.AddNums(100, 25);
+
+            //call static method
+            Console.WriteLine(SayHello("Gen"));
+
+            //Call method using delegate
+            var del = new Program();
+            del.CallDelegate();
         }
     }
 }
