@@ -13,7 +13,7 @@
 
             //Call method using delegate
             var del = new Program();
-            del.CallDelegate();
+            del.AnonymousDelegate();
         }
     }
 }
