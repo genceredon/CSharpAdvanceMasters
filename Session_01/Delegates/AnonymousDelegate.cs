@@ -1,9 +1,9 @@
-﻿namespace Session_01
+﻿namespace Session_01.Delegates
 {
     //Step1: Declare a generic delegate
     public delegate void Print(int value);
 
-    public partial class Program
+    public class AnonymousDel
     {
         public void AnonymousDelegate()
         {

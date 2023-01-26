@@ -1,9 +1,9 @@
-﻿namespace Session_01
+﻿namespace Session_01.Delegates
 {
     //Step1: Declare a generic delegate
     public delegate T MyGenericDelegate<T>(T param1, T param2);
 
-    public partial class Program
+    public class GenericDel
     {
         public void GenericDelegate()
         {

@@ -1,16 +1,15 @@
-﻿namespace Session_01
+﻿namespace Session_01.Delegates
 {
     //Step1: Declare a delegate
     public delegate void AddDelegate(int a, int b);
-
     public delegate string SayDelegate(string msg);
 
-    public partial class Program
+    public class DelegatesSample
     {
         public void CallDelegate()
         {
             Console.WriteLine("\nInside Delegate...");
-            var add = new Program();
+            var add = new DelegatesSample();
 
             //Step2: Instantiate a delegate
             AddDelegate addNum = new AddDelegate(add.AddNums);
@@ -20,7 +19,7 @@
             InvokeDelegate(addNum, sayDel);
         }
 
-        public static void InvokeDelegate(AddDelegate addNum, SayDelegate sayDel)
+        private static void InvokeDelegate(AddDelegate addNum, SayDelegate sayDel)
         {
             //Call Directly
             addNum(100, 30);
@@ -31,12 +30,12 @@
             Console.WriteLine(sayDel.Invoke("C#"));
         }
 
-        public void AddNums(int a, int b)
+        private void AddNums(int a, int b)
         {
             Console.WriteLine($"Sum is {a + b}");
         }
 
-        public static string SayHello(string msg)
+        private static string SayHello(string msg)
         {
             return $"Hello, {msg}!";
         }
