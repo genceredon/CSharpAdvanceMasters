@@ -30,12 +30,12 @@
             Console.WriteLine(sayDel.Invoke("C#"));
         }
 
-        private void AddNums(int a, int b)
+        public void AddNums(int a, int b)
         {
             Console.WriteLine($"Sum is {a + b}");
         }
 
-        private static string SayHello(string msg)
+        public static string SayHello(string msg)
         {
             return $"Hello, {msg}!";
         }
