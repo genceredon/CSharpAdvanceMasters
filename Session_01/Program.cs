@@ -1,5 +1,6 @@
 ﻿using Session_01.Delegates;
 using Session_01.Events;
+using System.Net.Http.Headers;
 
 namespace Session_01
 {
@@ -21,11 +22,20 @@ namespace Session_01
             //del.CallDelegate();
 
             //Call to Multicast delegate
-            var multiDel = new MultiDel();
-            multiDel.MultiDelegate();
+            //var multiDel = new MultiDel();
+            //multiDel.MultiDelegate();
+
+            //Call to GenericDelegate
+            //GenericDel.GenericDelegate();
+
+            //Call delegate with Anonymous method
+            //var anony = new AnonymousDel();
+            //anony.AnonymousDelegate();
 
             //var order = new Order();
             //order.OrderEvent();
+
+            ExtendingEventArgs.OrderEvent();
         }
     }
 }

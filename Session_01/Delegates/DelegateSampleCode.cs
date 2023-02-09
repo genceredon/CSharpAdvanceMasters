@@ -2,7 +2,7 @@
 {
     //Step1: Declare a delegate
     public delegate void AddDelegate(int a, int b);
-    public delegate string SayDelegate(string msg);
+    public delegate void SayDelegate(string msg);
 
     public class DelegatesSample
     {
@@ -13,21 +13,28 @@
 
             //Step2: Instantiate a delegate
             AddDelegate addNum = new AddDelegate(add.AddNums);
-            SayDelegate sayDel = new SayDelegate(SayHello);
+            SayDelegate sayHelloDel = new SayDelegate(SayHello);
+            SayDelegate sayHiDel = new SayDelegate(SayHi);
 
             //Step 3: Invoke the delegate
-            InvokeDelegate(addNum, sayDel);
+            InvokeDelegate(addNum, sayHelloDel);
+
+            SayDelegate sayDel = sayHelloDel + sayHiDel;
+            Console.WriteLine("\nAfter sayHelloDel + sayHiDel");
+            sayDel("Multicast delegate...");
         }
 
         private static void InvokeDelegate(AddDelegate addNum, SayDelegate sayDel)
         {
             //Call Directly
             addNum(100, 30);
-            Console.WriteLine(sayDel("Students!"));
+            sayDel("Students!");
+            //Console.WriteLine(sayDel("Students!"));
 
             //Call using Invoke method
             addNum.Invoke(100, 40);
-            Console.WriteLine(sayDel.Invoke("C#"));
+            sayDel.Invoke("C#");
+            //Console.WriteLine(sayDel.Invoke("C#"));
         }
 
         public void AddNums(int a, int b)
@@ -35,9 +42,14 @@
             Console.WriteLine($"Sum is {a + b}");
         }
 
-        public static string SayHello(string msg)
+        public static void SayHello(string msg)
         {
-            return $"Hello, {msg}!";
+            Console.WriteLine($"Hello, {msg}!");
+        }
+
+        public static void SayHi(string msg)
+        {
+            Console.WriteLine($"Hi, {msg}!");
         }
     }
 }

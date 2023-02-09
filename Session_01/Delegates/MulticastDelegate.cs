@@ -12,12 +12,12 @@
             var add = new MultiDel();
 
             //Step2: Instantiate a delegate
-            //MyDelegate del1 = new MyDelegate(Word1);
-            //MyDelegate del2 = new MyDelegate(Word2);
+            MyDelegate del1 = new MyDelegate(Word1);
+            MyDelegate del2 = new MyDelegate(Word2);
 
             //Step 3: Invoke the delegate
-            //MyDelegate del = del1 + del2;
-            //del = del - del1;
+            MyDelegate del = del1 + del2;
+            del = del - del1;
 
             //var del = del1 + del2;   
             //Console.WriteLine("\nAfter del1 + del2");

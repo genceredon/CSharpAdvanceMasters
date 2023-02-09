@@ -7,9 +7,9 @@ namespace Session_02
     {
         static void Main(string[] args)
         {
-            //var lambdaExp = new ExpressionLambda();
-            var lambdaStatement = new ExtensionSample();
-            Console.WriteLine("Hello, World!");
+            //var lambdaExp = new StatementLambda();
+
+            var extension = new ExtensionSample();
         }
     }
 }
