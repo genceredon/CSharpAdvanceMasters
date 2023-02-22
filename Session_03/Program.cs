@@ -1,10 +1,19 @@
-﻿namespace Session_03
+﻿using Session_03.Records;
+using Session_03.Tuples;
+
+namespace Session_03
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            //TuplesSample tuples = new();
+
+            //TuplesUseCase tupleUseCase = new();
+
+            //RecordEquality recordEquality = new();
+
+            RecordCustomMembers recordCustom = new();
         }
     }
 }

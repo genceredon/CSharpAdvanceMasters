@@ -15,9 +15,16 @@ namespace Session_02.ExtensionMethods
             return count;
         }
 
-        public static bool IsIntegerLessThanZero(this int num)
+        public static bool IsIntegerLessThanZero(int num)
+        {
+            return num < 0;
+        } 
+        
+        public static bool IsIntegerLessThanZeroExt(this int num)
         {
             return num < 0;
         }
+
+
     }
 }
