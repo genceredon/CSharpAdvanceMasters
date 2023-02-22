@@ -13,54 +13,60 @@ namespace Session_05
         {
             try
             {
-                // Create new Dictionary
                 Dictionary<int, string> keyValuePairs = new Dictionary<int, string>();
 
-                //Add elements to dictionary
-                // Let's create a daily event dictionary for The 1st week of January
-                string[] events = { string.Empty, "New Year's Day", "Day 2", "Townhall Meeting", "Product Increment Planning", "Devs Meeting", "Weekend Rest", "Prep for Nextweek" };
-
-                Console.WriteLine("Day " + string.Empty.PadRight(5) + " Event ");
-                for (int i = 0; i <= 7; i++)
-                {
-                    keyValuePairs.Add(i, events[i]);
-                }
-
-                //TIP: You can update the value associated with a Key, Will change the "Day 2" event
-                // Another TIP : before updating value, it's better to validate if the key is existing first -- with ContainsKey
-                if (keyValuePairs.ContainsKey(2))
-                {
-                    keyValuePairs[2] = "Start work for the year";
-                }
+                // Add Element to dictionary
+                keyValuePairs.Add(2, "New year");
+                keyValuePairs.Add(3, "Townhall meeting");
+                keyValuePairs.Add(1, "Weekend");
 
 
-                // Retrieve all the Key and Value
+                // Retrieve all data added on dictionary
                 foreach (var kvp in keyValuePairs)
                 {
-                    Console.WriteLine(kvp.Key.ToString() + string.Empty.PadRight(5) + kvp.Value);
+                    Console.WriteLine(kvp.Key.ToString() + " - " + kvp.Value);
                 }
 
-                // Retrieve specific values with validation
-                string specificVal = string.Empty;
-                if (keyValuePairs.TryGetValue(2, out specificVal))
+                // Retrive the dictionary value by key in bracket
+                Console.WriteLine(keyValuePairs[2]);
+                Console.WriteLine(keyValuePairs[1]);
+                Console.WriteLine(keyValuePairs[3]);
+
+                // And you can also retrieve value by method TryGetValue passing key, and out for passing the value if the key is true/existing
+                string value = string.Empty;
+                if (keyValuePairs.TryGetValue(2, out value))
                 {
-                    Console.WriteLine(specificVal);
+                    Console.WriteLine("TryGetValue : " + value);
                 }
 
-                //Must throw exception if the Key is not valid
-                Console.WriteLine(keyValuePairs[9]);
+                // But how can we get the key by Value
+                var getKeyByvalue = keyValuePairs.FirstOrDefault(ev => ev.Value == "Weekend").Key;
+                Console.WriteLine(getKeyByvalue);
 
-               // Remove a dictionary, pass value on another object
-                if(keyValuePairs.Remove(2, out specificVal))
+                // Update element 
+                // TIP: Update value with validation that the key is existing with ContainsKey
+                if (keyValuePairs.ContainsKey(2))
                 {
-                    Console.WriteLine(specificVal);
+                    keyValuePairs[2] = "Start of the year";
                 }
 
-                //Remove with just Key
-                keyValuePairs.Remove(1);
+
+                // Remove an element by key
+                keyValuePairs.Remove(2);
+
+                // Another sample on how to remove an element by key 
+                if (keyValuePairs.Remove(2, out value))
+                {
+                    Console.WriteLine("Removed value : " + value);
+                }
+
+                foreach (var kvp in keyValuePairs)
+                {
+                    Console.WriteLine(kvp.Key.ToString() + " - " + kvp.Value);
+                }
 
             }
-            catch(KeyNotFoundException q)
+            catch (KeyNotFoundException q)
             {
                 Console.WriteLine(q.Message);
             }

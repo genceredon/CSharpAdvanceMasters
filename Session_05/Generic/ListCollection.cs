@@ -9,69 +9,72 @@ namespace Session_05.Generic
     {
         public void CreateList()
         {
-            // Create a new List of String
-            List<string> ChannelName = new List<string>();
+            List<string> ChannelNames = new List<string>();
 
-            //Insert Items to List
-            ChannelName.Add("CNN");
-            ChannelName.Add("Netflix");
-            ChannelName.Add("HBO");                     
-
-            if(!ChannelName.Contains("ABS"))
-            {
-                ChannelName.Add("ABS");
-            }
-         
-            //Insert on specific index/order
-            ChannelName.Insert(0, "GMA");
+            // Add items to List
+            ChannelNames.Add("CNN");
+            ChannelNames.Add("Netflix");
+            ChannelNames.Add("HBO");
 
             Console.WriteLine("List of Channel Names");
-            //Retrieve list of ChannelName
-            foreach (var cn in ChannelName)
+
+            foreach (var cn in ChannelNames)
             {
                 Console.WriteLine(cn);
             }
 
-            // Retrieve/Update by Index is also possible
-            ChannelName[2] = "LOL";
-            Console.WriteLine("Updated Value : " + ChannelName[2]);
-            //Remove
-            ChannelName.Remove("ABS");
-            //Remove By Index
-            ChannelName.RemoveAt(2);
+            // Retrieve single element
+            Console.WriteLine(ChannelNames[2]);
 
-            Console.WriteLine("List of Channel Names");
-            //Retrieve list of ChannelName
-            foreach (var cn in ChannelName)
-            {
-                Console.WriteLine(cn);
-            }
+            // Update element by index
+            ChannelNames[1] = "Disney Plus";
 
-            // Create a list of Channel -- for another sample
+            Console.WriteLine("Updated : " + ChannelNames[1]);
+
+
+            // Remove from list
+            ChannelNames.Remove("CNN");
+            // Remove by Index
+            ChannelNames.RemoveAt(1);
+
+
             List<Channel> channels = new List<Channel>();
-            channels.Add(new Channel { Id = 777, Name = "HBO", FrequencyNumber = 8457 });
+
+            ////Add Items
+            channels.Add(new Channel { Id = 777, Name = "HBO", FrequencyNumber = 7799 });
             channels.Add(new Channel { Id = 555, Name = "Discovery Channel", FrequencyNumber = 78787 });
             channels.Add(new Channel { Id = 444, Name = "GMA", FrequencyNumber = 4577 });
+            channels.Add(new Channel { Id = 34, Name = "ABC", FrequencyNumber = 4577 });
+            channels.Add(new Channel { Id = 232, Name = "GMA1", FrequencyNumber = 4577 });
 
             Console.WriteLine("List of Channel Names");
-            //Retrieve list of Channels
+
+
+            // Update Item
+            channels[2] = new Channel {Id = 5454, Name = "LOL" };
+
+
+            // Remove
+            var channelToRemove = channels.FirstOrDefault(cn => cn.Name == "HBO");
+            //Remove Item
+            channels.Remove(channels[2]);
+            //channels.RemoveAt(2);
+
+            List<Channel> channel1 = new List<Channel> {
+                new Channel { Id = 832748 , Name = "Prime", FrequencyNumber = 4784}
+            };
+
+            // Sort by Name
+            channels = channels.OrderBy(cn => cn.Name).ToList();
+
+            // Merge list to another list
+            channels.AddRange(channel1);
+
+
             foreach (var cn in channels)
             {
-                Console.WriteLine(cn);
+                Console.WriteLine("Id: " + cn.Id + " - Channel Name : " + cn.Name);
             }
-
-            //Bonus Sample : query the list
-            var queryChannel = channels.Where(x => x.Id == 777);
-            // Get Count of Channel queried
-            Console.WriteLine("Query Count of Channel: " + queryChannel.Count().ToString());
-
-            // Print Query Result
-            Console.WriteLine("Channel Result");
-            Console.WriteLine("Id" + string.Empty.PadRight(5) + " Channel Name");
-            Console.WriteLine(queryChannel.FirstOrDefault().Id + string.Empty.PadRight(5) + queryChannel.FirstOrDefault().Name);
-
-
-         
         }
 
 
