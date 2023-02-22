@@ -5,9 +5,10 @@
 
     public class GenericDel
     {
-        public void GenericDelegate()
+        public static void GenericDelegate()
         {
             Console.WriteLine("\nInside Generic Delegate...");
+            //MyGenericDelegate<int> sum = new MyGenericDelegate<int>(Sum);
             MyGenericDelegate<int> sum = Sum;
             Console.WriteLine($"Sum: {sum(10, 20)}");
 
