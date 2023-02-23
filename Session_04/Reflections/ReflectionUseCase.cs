@@ -86,7 +86,7 @@ namespace Session_04.Reflections
             //Console.WriteLine(PokemonType.FullName);
 
             // Step 2 Browse the Metadata of the Object
-            MethodInfo EmberMethodInfo = PokemonType.GetMethod("Ember");
+            MethodInfo? EmberMethodInfo = PokemonType.GetMethod("Ember");
 
             if (EmberMethodInfo == null )
             {
@@ -95,7 +95,7 @@ namespace Session_04.Reflections
             else
             {
                 // Step 3 Dynamic invoke
-                object EmberAnimaInstance = Activator.CreateInstance(PokemonType);
+                object? EmberAnimaInstance = Activator.CreateInstance(PokemonType);
                 EmberMethodInfo.Invoke(EmberAnimaInstance, null);
             }
         }
@@ -131,7 +131,7 @@ namespace Session_04.Reflections
     public class TechnicalMachine: Attribute
     {
         public string TM { get; set; }
-        public TechnicalMachine(string? tm)
+        public TechnicalMachine(string tm)
         {
             TM = tm;
         }

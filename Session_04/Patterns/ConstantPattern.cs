@@ -49,8 +49,8 @@ namespace Session_04.Patterns
 
         public class PersonClass
         {
-            public string FirstName { get; set; }
-            public string LastName { get; set; }
+            public string? FirstName { get; set; }
+            public string? LastName { get; set; }
         }
 
     }
