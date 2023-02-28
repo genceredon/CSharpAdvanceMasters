@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Session_07.LINQ_Queries
 {
-    public class SimpleLinqQuery
+    public static class SimpleLinqQuery
     {
-        public void DisplayScores()
+        public static void DisplayScores()
         {
             // The Three Parts of a LINQ Query:
             // 1. Specify the data source.

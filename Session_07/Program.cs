@@ -17,12 +17,10 @@ namespace Session_07
             //var obj = new SimpleLinqQuery();
             //obj.DisplayScores();
 
-            //var test = new GetEmployee();
-            //test.LINQToSQL();
+            //LINQToObjects.LINQToObjectsSample();
 
-            var obj = new GetEmployee();
-            obj.UsingLINQStatement();
-
+            //GetEmployee.UsingSQLStatement();
+            GetEmployee.UsingLINQStatement();
         }
 
     }

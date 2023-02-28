@@ -1,18 +1,16 @@
-﻿using Session_07.LINQ_Queries.LINQToSQL.Data;
+﻿using Microsoft.EntityFrameworkCore.Metadata;
+using Session_07.LINQ_Queries.LINQToSQL.Data;
 using Session_07.LINQ_Queries.LINQToSQL.Models;
-using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Session_07.LINQ_Queries.LINQToSQL.DAL
 {
     public class EmployeeDAL
     {
         public string connectionString;
+
         public EmployeeDAL()
         {
             connectionString = AppConfig.GetConnectionString();
@@ -45,10 +43,6 @@ namespace Session_07.LINQ_Queries.LINQToSQL.DAL
                         });
                     }
                 }
-
-                //Using LINQ to SQL
-                //linqtosqldatacontext dataOject = new LINQToSQLDataContext();
-
             }
             catch (Exception exp)
             {
@@ -67,20 +61,12 @@ namespace Session_07.LINQ_Queries.LINQToSQL.DAL
                 {
                     DbInitializer.Initialize(context);
 
-                    var emp = new Employees
-                    {
-                        EmpCode = "S005",
-                        EmpFullName = "Gen C",
-                        Role = "Developer"
-                    };
-
-                    employeesList = context.Employee.ToList();
+                    //employeesList = context.Employee.ToList();
+                    employeesList = (List<Employees>)(from emp in context.Employee.ToList()
+                                    where emp.EmpFullName == "Juanna Dela Cruz"
+                                    select emp);
 
                 }
-
-                //Using LINQ to SQL
-                //linqtosqldatacontext dataOject = new LINQToSQLDataContext();
-
             }
             catch (Exception exp)
             {
@@ -88,6 +74,35 @@ namespace Session_07.LINQ_Queries.LINQToSQL.DAL
             }
 
             return employeesList;
+        }
+
+        public Employees GetSpecificEmployeeUsingLINQ()
+        {
+            List<Employees> employeesList = new List<Employees>();
+            Employees employee = new Employees();
+            try
+            {
+                using (var context = new EmployeeContext())
+                {
+                    DbInitializer.Initialize(context);
+
+                    employeesList = context.Employee.ToList();
+                    
+                    employee = (from emp in context.Employee
+                                where emp.EmpFullName == "Juanna Dela Cruz"
+                                select emp).FirstOrDefault();
+
+                    var employee2 = employeesList.Where(x => x.EmpFullName == "Juanna Dela Cruz").FirstOrDefault();
+
+
+                }
+            }
+            catch (Exception exp)
+            {
+                throw;
+            }
+
+            return employee;
         }
     }
 }

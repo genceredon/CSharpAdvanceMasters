@@ -8,10 +8,11 @@ using System.Threading.Tasks;
 
 namespace Session_07.LINQ_Queries.LINQToSQL
 {
-    public class GetEmployee
+    public static class GetEmployee
     {
-        public void UsingSQLStatement()
+        public static void UsingSQLStatement()
         {
+            Console.WriteLine("Inside UsingSQLStatement");
             List<Employees> employeeList = new EmployeeDAL().GetAllEmployeeUsingSQL();
 
             employeeList.ForEach(item =>
@@ -23,19 +24,28 @@ namespace Session_07.LINQ_Queries.LINQToSQL
             Console.ReadKey();
         }
 
-        public void UsingLINQStatement()
+        public static void UsingLINQStatement()
         {
-            List<Employees> employeeList = new EmployeeDAL().GetAllEmployeeUsingLINQ();
+            Console.WriteLine("Inside UsingLINQStatement");
 
-            employeeList.ForEach(item =>
-            {
-                Console.WriteLine("Code: " + item.EmpCode + " Full Name: " + item.EmpFullName
-                    + " Designation: " + item.Role);
-            });
+            //List<Employees> employeeList = new EmployeeDAL().GetAllEmployeeUsingLINQ();
 
-            Console.ReadKey();
+            //var emp = employeeList.Where(item => item.EmpFullName == "Juanna Dela Cruz").FirstOrDefault();
+
+            //Console.WriteLine("Code: " + emp.EmpCode + " Full Name: " + emp.EmpFullName
+            //       + " Designation: " + emp.Role);
+
+            //employeeList.ForEach(item =>
+            //{
+            //    Console.WriteLine("Code: " + item.EmpCode + " Full Name: " + item.EmpFullName
+            //        + " Designation: " + item.Role);
+            //});
+
+
+            var employee = new EmployeeDAL().GetSpecificEmployeeUsingLINQ();
+
+            Console.WriteLine("Code: " + employee.EmpCode + " Full Name: " + employee.EmpFullName
+                   + " Designation: " + employee.Role);
         }
-
-
     }
 }
