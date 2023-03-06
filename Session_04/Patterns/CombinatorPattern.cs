@@ -46,7 +46,8 @@ namespace Session_04.Patterns
             > 90m and <= 95 => "A",
             > 85m and <= 90 => "B+",
             > 80m and <= 85 => "B",
-            < 80 => "F"
+            < 80 => "F",
+            _ => throw new NotImplementedException()
         };
 
     }

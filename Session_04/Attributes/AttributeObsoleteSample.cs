@@ -8,6 +8,7 @@ namespace Session_04.Attributes
 {
     public class AttributeObsoleteSample
     {
+        [Obsolete]
         public AttributeObsoleteSample()
         {
             int num1 = 2;

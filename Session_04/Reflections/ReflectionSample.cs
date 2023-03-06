@@ -19,9 +19,9 @@ namespace Session_04.Reflections
 
             //Parameter can be (namespace.class) via assembly qualified name
             Type T = executingAssembly.GetType("Session_04.Reflections.ReflectionSample+Cat"); 
-            object catInstance = Activator.CreateInstance(T, null);
-            MethodInfo talkMethodInfo = T.GetMethod("Talk");
-            talkMethodInfo.Invoke(catInstance, null);
+            object? catInstance = Activator.CreateInstance(T, null);
+            MethodInfo? talkMethodInfo = T.GetMethod("Talk");
+            _ = talkMethodInfo.Invoke(catInstance, null);
 
 
 
