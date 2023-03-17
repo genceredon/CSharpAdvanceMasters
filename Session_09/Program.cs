@@ -1,10 +1,18 @@
-﻿namespace Session_09
+﻿using Session_09.Threading;
+
+namespace Session_09
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            //ThreadingSample threadingSample = new();
+
+            //ThreadPoolingSample threadPoolingSample = new();
+
+            PrioritySample prioritySample = new();
+
+            //ThreadAssignment threadAssignment = new();
         }
     }
 }
