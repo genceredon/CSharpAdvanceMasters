@@ -21,11 +21,11 @@ namespace Session_09.Threading
 
             Thread thread2 = new Thread(() => CountDownTimer("Thread #2"));
             thread2.Name = "Thread two";
-            thread2.Priority = ThreadPriority.Normal;
+            thread2.Priority = ThreadPriority.AboveNormal;
 
             Thread thread3 = new Thread(() => CountDownTimer("Thread #3"));
             thread3.Name = "Thread three";
-            thread3.Priority = ThreadPriority.Normal;
+            thread3.Priority = ThreadPriority.BelowNormal;
 
             thread1.Start();
             thread2.Start();
